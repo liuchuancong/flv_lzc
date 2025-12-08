@@ -149,7 +149,7 @@
       "name": "flv_lzc",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "3.10"
     }
   ],
   "generator": "pub",

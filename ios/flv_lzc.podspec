@@ -32,4 +32,3 @@ Flutter plugin for ijkplayer
 
   s.ios.deployment_target = '8.0'
 end
-

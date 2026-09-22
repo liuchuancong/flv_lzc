@@ -24,7 +24,7 @@ This package fixes the following issues from the original fijkplayer:
 
 ## Documentation 文档
 
-* Development Documentation https://fijkplayer.befovy.com/docs/en/ quick start、guide、and concepts about fijkplayer 
+* Development Documentation https://fijkplayer.befovy.com/docs/en/ quick start、guide、and concepts about fijkplayer
 * 开发文档  https://fijkplayer.befovy.com/docs/zh/ 包含快速开始、使用指南、fijkplayer 中的概念理解
 * dart api https://pub.dev/documentation/fijkplayer/ detail API and argument explaination
 * Release Notes https://github.com/befovy/fijkplayer/releases and [CHANGELOG.md](./CHANGELOG.md)
@@ -32,7 +32,7 @@ This package fixes the following issues from the original fijkplayer:
 
 ## Installation 安装
 
-Add `flv_lzc` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/). 
+Add `flv_lzc` as a [dependency in your pubspec.yaml file](https://flutter.io/using-packages/).
 
 ```yaml
 dependencies:

@@ -437,7 +437,7 @@ static int renderType = 0;
 }
 
 - (void) takeSnapshot{
-    
+
     [_ijkMediaPlayer takeSnapshot:^(UIImage * _Nullable image, NSError * _Nullable error) {
         if (image != nil) {
             NSDictionary *args = @{@"data":UIImageJPEGRepresentation(image, 1.0), @"w": @(image.size.width), @"h": @(image.size.height)};

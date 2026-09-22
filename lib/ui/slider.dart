@@ -49,9 +49,9 @@ class FijkSlider extends StatefulWidget {
     this.min = 0.0,
     this.max = 1.0,
     this.colors = const FijkSliderColors(),
-  })  : assert(min <= max),
-        assert(value >= min && value <= max),
-        super(key: key);
+  }) : assert(min <= max),
+       assert(value >= min && value <= max),
+       super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -77,9 +77,7 @@ class _FijkSliderState extends State<FijkSlider> {
         height: double.infinity,
         width: double.infinity,
         color: Colors.transparent,
-        child: CustomPaint(
-          painter: _SliderPainter(v, cv, dragging, colors: widget.colors),
-        ),
+        child: CustomPaint(painter: _SliderPainter(v, cv, dragging, colors: widget.colors)),
       ),
       onHorizontalDragStart: (DragStartDetails details) {
         setState(() {
@@ -123,13 +121,10 @@ class FijkSliderColors {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FijkSliderColors &&
-          runtimeType == other.runtimeType &&
-          hashCode == other.hashCode;
+      other is FijkSliderColors && runtimeType == other.runtimeType && hashCode == other.hashCode;
 
   @override
-  int get hashCode =>
-      Object.hash(playedColor, bufferedColor, cursorColor, baselineColor);
+  int get hashCode => Object.hash(playedColor, bufferedColor, cursorColor, baselineColor);
 }
 
 class _SliderPainter extends CustomPainter {
@@ -141,8 +136,7 @@ class _SliderPainter extends CustomPainter {
 
   final FijkSliderColors colors;
 
-  _SliderPainter(this.v, this.cv, this.dragging,
-      {this.colors = const FijkSliderColors()});
+  _SliderPainter(this.v, this.cv, this.dragging, {this.colors = const FijkSliderColors()});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -153,10 +147,7 @@ class _SliderPainter extends CustomPainter {
     // draw background
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromPoints(
-          Offset(0, size.height / 2 - lineHeight),
-          Offset(size.width, size.height / 2 + lineHeight),
-        ),
+        Rect.fromPoints(Offset(0, size.height / 2 - lineHeight), Offset(size.width, size.height / 2 + lineHeight)),
         Radius.circular(radius),
       ),
       pt,
@@ -168,10 +159,7 @@ class _SliderPainter extends CustomPainter {
     pt.color = colors.playedColor;
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromPoints(
-          Offset(0, size.height / 2 - lineHeight),
-          Offset(value, size.height / 2 + lineHeight),
-        ),
+        Rect.fromPoints(Offset(0, size.height / 2 - lineHeight), Offset(value, size.height / 2 + lineHeight)),
         Radius.circular(radius),
       ),
       pt,
@@ -195,7 +183,7 @@ class _SliderPainter extends CustomPainter {
 
     // draw circle cursor
     pt.color = colors.cursorColor;
-    pt.color = pt.color.withAlpha(max(0, pt.color.alpha - 50));
+    pt.color = pt.color.withValues(alpha: ((pt.color.a * 255.0).round().clamp(0, 255) - 50) / 255.0);
     radius = min(size.height / 2, dragging ? 10 : 5);
     canvas.drawCircle(Offset(value, size.height / 2), radius, pt);
     pt.color = colors.cursorColor;
@@ -204,9 +192,7 @@ class _SliderPainter extends CustomPainter {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is _SliderPainter && hashCode == other.hashCode;
+  bool operator ==(Object other) => identical(this, other) || other is _SliderPainter && hashCode == other.hashCode;
 
   @override
   int get hashCode => Object.hash(v, cv, dragging, colors);

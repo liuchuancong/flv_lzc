@@ -314,7 +314,7 @@ All notable changes to this project will be documented in this file. See [standa
 ## 0.1.0
 - update ijkplauer to f0.3.5
 - fijkplayer err state and FijkException
-- support playing flutter asset file 
+- support playing flutter asset file
 - unit test and widget test
 - pass fijkoption arguments and set player's option
 
@@ -356,3 +356,7 @@ All notable changes to this project will be documented in this file. See [standa
 --------------------------------
 - A usable music player plugin
 - Draw the video frame through surface for android
+## 1.0.4+purelive.1
+
+* Defer Android SurfaceTexture creation until a real player requests it. This
+  fixes an intermittent Flutter engine cold-start abort during plugin attach.

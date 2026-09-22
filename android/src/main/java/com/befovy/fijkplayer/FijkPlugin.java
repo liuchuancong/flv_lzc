@@ -103,9 +103,12 @@ public class FijkPlugin implements MethodCallHandler, FlutterPlugin, ActivityAwa
         initWithBinding(binding);
         channel.setMethodCallHandler(this);
 
-        final FijkPlayer player = new FijkPlayer(this, true);
-        player.setupSurface();
-        player.release();
+        // A SurfaceTexture must be registered only after the Flutter engine is
+        // fully attached. The upstream attach-time probe created and released
+        // one while plugins were still registering. Recent Flutter engines
+        // abort that race in platform_view_android.cc, which made cold starts
+        // succeed intermittently. Real players allocate their texture lazily
+        // from setupSurface after Dart creates a player.
 
         AudioManager audioManager = audioManager();
         if (audioManager != null) {
